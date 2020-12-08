@@ -1,0 +1,13 @@
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.BLL.Interfaces.dll.config
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.BLL.Interfaces.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.BLL.Interfaces.pdb
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.Entities.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\EntityFramework.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.Entities.pdb
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\SSU_ThreeLayer.Entities.dll.config
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\bin\Debug\EntityFramework.xml
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\obj\Debug\SSU_ThreeLayer.BLL.Interfaces.csprojAssemblyReference.cache
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\obj\Debug\SSU_ThreeLayer.BLL.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\obj\Debug\SSU_ThreeLayer.BLL.Interfaces.csproj.CopyComplete
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\obj\Debug\SSU_ThreeLayer.BLL.Interfaces.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.BLL.Interfaces\obj\Debug\SSU_ThreeLayer.BLL.Interfaces.pdb

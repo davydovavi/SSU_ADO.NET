@@ -1,0 +1,56 @@
+﻿@using Ninject
+@using SSU_ThreeLayer.DI
+@using SSU_ThreeLayer.BLL.Interfaces
+@using SSU_ThreeLayer.Entities
+@{
+    Layout = "~/Pages/Layouts/_HeaderLayout.cshtml";
+    var shopLogic = DependencyResolver.Kernel.Get<IShopLogic>();
+    var userLogic = DependencyResolver.Kernel.Get<IUserLogic>();
+    var ratingLogic = DependencyResolver.Kernel.Get<IRatingLogic>();
+}
+
+@if (IsPost)
+{
+    int idShop;
+    int idUser;
+    int rate;
+    string alert = "";
+    if (int.TryParse(Request["IdShop"], out idShop) && int.TryParse(Request["IdUser"], out idUser) && int.TryParse(Request["rate"], out rate))
+    {
+        ratingLogic.SetRate(idUser, idShop, rate, out alert);
+    }
+}
+
+<div class="container">
+    @foreach (var item in userLogic.GetUserByName(User.Identity.Name).ShopList)
+    {
+    <div class="shop">
+
+        <div class="shop-info-block">
+            <div>@item.IdShop</div>
+            <div>@item.NameShop</div>
+        </div>
+        <div class="typeofshop">
+            <b>TypeOfShop:&nbsp;</b>@item.typeOfShop.Description
+        </div>
+        <div class="shop-info-block">
+            <div>@item.address.Country</div>
+            <div>@item.address.City</div>
+            <div>@item.address.Street</div>
+            <div>@item.address.Build</div>
+        </div>
+        <div class="ratings">
+            <b>Ratings:&nbsp;</b> @item.Ratings
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="shop-buttons">
+                <form action="~/Index.cshtml" method="post">
+                    <input type="number" name="IdShop" value="@item.IdShop" class="hidden" />
+                    <button>GetShopsOfUser</button>
+                </form>
+            </div>
+        }
+    </div>
+    }
+</div>

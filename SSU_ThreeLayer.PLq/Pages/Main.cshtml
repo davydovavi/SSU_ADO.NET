@@ -1,0 +1,156 @@
+﻿@using Ninject
+@using SSU_ThreeLayer.DI
+@using SSU_ThreeLayer.BLL.Interfaces
+@using SSU_ThreeLayer.Entities
+@{
+    Layout = "~/Pages/Layouts/_HeaderLayout.cshtml";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~");
+    }
+    var shopLogic = DependencyResolver.Kernel.Get<IShopLogic>();
+    var userLogic = DependencyResolver.Kernel.Get<IUserLogic>();
+}
+
+@if (IsPost)
+{
+    if (Request["Action"] == "AddShop")
+    {
+        string alert;
+
+        int idTypeOfShop;
+        int idAddress;
+        if (int.TryParse(Request["IdTypeOfShop"], out idTypeOfShop) && int.TryParse(Request["IdAddress"], out idAddress))
+        {
+
+            shopLogic.AddShop(
+                Request["NameShop"],
+                idTypeOfShop,
+                idAddress,
+                out alert);
+            <script>
+                alert('@alert');
+            </script>
+        }
+    }
+    else if (Request["Action"] == "DeleteShop")
+    {
+        string alert;
+        int idShop;
+
+        if (int.TryParse(Request["IdShop"], out idShop))
+        {
+            Shop shop = shopLogic.GetShopById(idShop);
+            if (shop != null)
+            {
+                shopLogic.DeleteShop(shop, out alert);
+            }
+        }
+    }
+    else if (Request["Action"] == "UpdateShop")
+    {
+        string alert;
+        //var userLogic = DependencyResolver.Kernel.Get<IUserLogic>();
+
+        int idShop;
+        if (int.TryParse(Request["IdShop"], out idShop))
+        {
+            Shop shop = shopLogic.GetShopById(idShop);
+            int idTypeOfShop;
+            int idAddress;
+
+            if (int.TryParse(Request["IdTypeOfShop"], out idTypeOfShop) && int.TryParse(Request["IdAddress"], out idAddress))
+            {
+                if (shop != null)
+                {
+                    shopLogic.UpdateShop(
+                        shop,
+                        Request["NameShop"],
+                        idTypeOfShop,
+                        idAddress,
+                        out alert);
+
+                    <script>alert('@alert')</script>
+                }
+            }
+
+        }
+    }
+}
+
+<div class="container">
+
+    <div class="shop">
+        <form action="~/Pages/Main.cshtml" method="post" class="add-form" enctype="multipart/form-data">
+
+            <input type="text" name="Action" class="hidden" value="AddShop" />
+
+            <div class="text-input-add-shop">
+                <div>
+                    <input required maxlength="32" minlength="4" type="text" name="NameShop" value="" placeholder="Shop name" />
+                    <input required type="number" name="idTypeOfShop" value="" placeholder="Id type of shop" />
+                    <input required type="number" name="idAddress" value="" placeholder="Id address" />
+                </div>
+               
+            </div>
+
+            <button>Add shop</button>
+        </form>
+    </div>
+
+    @foreach (var item in userLogic.GetUserByName(User.Identity.Name).ShopList)
+    {
+    <div class="shop">
+        <div class="shop-info-block">
+            <div>@item.IdShop</div>
+            <div>@item.NameShop</div>
+        </div>
+        <div class="typeofshop">
+            <b>TypeOfShop:&nbsp;</b>@item.typeOfShop.Description
+        </div>
+        <div class="shop-info-block">
+            <div>@item.address.Country</div>
+            <div>@item.address.City</div>
+            <div>@item.address.Street</div>
+            <div>@item.address.Build</div>
+        </div>
+        <div class="ratings">
+            <b>Rtaings:&nbsp;</b>@item.Ratings
+        </div>
+        <div class="shop-buttons">
+            <div class="edit-btn-container">
+                <button class="edit-btn" onclick="openModalWindowWithValue('edit-shop-modal-window', 'id-shop-edit-input', @item.IdShop)">
+                    Update
+                </button>
+            </div>
+            <form action="~/Pages/Main.cshtml" method="post">
+                <input type="text" name="Action" value="DeleteShop" class="hidden" />
+                <input type="number" name="IdShop" value="@item.IdShop" class="hidden" />
+                <button>Remove</button>
+            </form>
+        </div>
+    </div>
+    }
+
+
+
+    <div class="modal-window" id="edit-shop-modal-window">
+        <form action="~/Pages/Main.cshtml" method="post" class="modal-window-content" enctype="multipart/form-data">
+            <div class="button-close-modal-window" onclick="closeModalWindow('edit-shop-modal-window')">&times;</div>
+            <h1>Update</h1>
+
+            <input type="text" name="Action" value="UpdateShop" class="hidden" />
+            <input type="number" name="IdShop" value="" id="IdShop" class="hidden" />
+
+            <input type="text" name="NameShop" value="" placeholder="Shop name" />
+            <input type="number" name="IdTypeOfShop" value="" placeholder="Id type of shop" />
+            <input type="number" name="IdAddress" value="" placeholder="Id address" />
+
+            <button>Update</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/ForModelWindows.js"></script>

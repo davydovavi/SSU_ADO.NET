@@ -1,0 +1,12 @@
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\SSU_ThreeLayer.Entities.dll.config
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\SSU_ThreeLayer.Entities.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\SSU_ThreeLayer.Entities.pdb
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\obj\Debug\SSU_ThreeLayer.Entities.csprojAssemblyReference.cache
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\obj\Debug\SSU_ThreeLayer.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\obj\Debug\SSU_ThreeLayer.Entities.csproj.CopyComplete
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\obj\Debug\SSU_ThreeLayer.Entities.dll
+C:\Users\Виктория\source\repos\SSU_ThreeLayer\SSU_ThreeLayer.Entities\obj\Debug\SSU_ThreeLayer.Entities.pdb

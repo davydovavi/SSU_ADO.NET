@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Layouts/_HeaderLayout.cshtml";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~");
+    }
+}
+
+<div class="container">
+    <h1>My Profile</h1>
+
+    @using (Html.BeginForm("UpdateUser", "Home", FormMethod.Post, new { @class = "my-profile-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h3>Update user</h3>
+        <div>@User.Identity.Name</div>
+        <input required maxlength="255" type="text" name="newUsername" value="" placeholder="New user name" />
+        <input required maxlength="255" type="text" name="newUserlogin" value="" placeholder="New user login" />
+        <input required maxlength="255" type="text" name="newUserpassword" value="" placeholder="New user password" />
+        <button>Update user</button>
+    }
+
+</div>

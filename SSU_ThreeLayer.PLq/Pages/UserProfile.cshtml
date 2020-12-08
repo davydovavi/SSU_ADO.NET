@@ -1,0 +1,44 @@
+﻿@using Ninject
+@using SSU_ThreeLayer.DI
+@using SSU_ThreeLayer.BLL.Interfaces
+@using SSU_ThreeLayer.Entities
+    Layout = "~/Pages/Layouts/_HeaderLayout.cshtml";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~");
+    }
+}
+
+@if (IsPost)
+{
+    var userLogic = DependencyResolver.Kernel.Get<IUserLogic>();
+    if (Request["Action"] == "UpdateUser")
+    {
+        string alert;
+        userLogic.UpdateUser(
+            User.Identity.Name,
+            Request["NewNameUser"],
+            Request["Login"],
+            Request["NewLogin"],
+            Request["Password"],
+            Request["NewPassword"],
+            out alert);
+
+        <script>alert('@alert')</script>
+    }
+    
+}
+
+<div class="container">
+    <h1>My page</h1>
+    <form action="~/Pages/UserProfile.cshtml" method="post" class="my-profile-form">
+        <h3>Update user</h3>
+        <div>@User.Identity.Name</div>
+        <input type="text" name="Action" value="UpdateUser" class="hidden" />
+        <input required maxlength="255" type="text" name="Username" value="" placeholder="Update name" />
+        <input required maxlength="32"  type="text" name="Login" value="" placeholder="Update login" />
+        <input required maxlength="32"  type="text" name="Password" value="" placeholder="Update password" />
+        <button>Update</button>
+    </form>
+
+</div>

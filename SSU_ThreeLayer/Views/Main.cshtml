@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SSU_ThreeLayer.ViewModel.VisShopVM>
+@{
+    Layout = "~/Views/Layouts/_HeaderLayout.cshtml";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("~");
+    }
+}
+
+<div class="container">
+
+    <div class="shop">
+
+        @using (Html.BeginForm("AddShop", "Home", FormMethod.Post, new { @class = "add-form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="text-input-add-shop">
+                <div>
+                    <input required type="text" name="name" value="" placeholder="NameShop" />
+                    <input required type="number" name="idType" value="" placeholder="IdTypeOfShop" />
+                    <input required type="number" name="idAddress" value="" placeholder="IdAddress" />
+                </div>
+                
+            </div>
+
+            <button>Add shop</button>
+        }
+    </div>
+
+    @foreach (var item in Model)
+    {
+    <div class="shop">
+        <div class="shop-info-block">
+            <div>@item.IdShop</div>
+            <div>@item.NameShop</div>
+        </div>
+        <div class="typeofshop">
+            <b>TypeOfShop:&nbsp;</b>@item.typeOfShop.Description
+        </div>
+        <div class="address">
+            <div>@item.address.Country</div>
+            <div>@item.address.City</div>
+            <div>@item.address.Street</div>
+            <div>@item.address.Build</div>
+        </div>
+        <div class="rating">
+            <b>Ratings:&nbsp;</b>@item.Ratings
+        </div>
+        <div class="shop-buttons">
+            <div class="edit-btn-container">
+                <button class="edit-btn" onclick="openModalWindowWithValue('edit-shop-modal-window', 'id-shop-edit-input', @item.IdShop)">
+                    Update
+                </button>
+            </div>
+            <form action="~/Pages/Main.cshtml" method="post">
+                <input type="text" name="Action" value="DeleteShop" class="hidden" />
+                <input type="number" name="IdShop" value="@item.IdShop" class="hidden" />
+                <button>Delete</button>
+            </form>
+        </div>
+    </div>
+    }
+
+
+
+    <div class="modal-window" id="edit-shop-modal-window">
+
+        @using (Html.BeginForm("UpdateShop", "Home", FormMethod.Post, new { @class = "modal-window-content", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="button-close-modal-window" onclick="closeModalWindow('edit-shop-modal-window')">&times;</div>
+            <h1>Update shop</h1>
+
+            <input type="number" name="idShop" value="" id="id-shop-edit-input" class="hidden" />
+
+            <input type="text" name="title" value="" placeholder="Shop name" />
+            <input type="number" name="cost" value="" placeholder="Id yype of shop" />
+            <input type="number" name="cost" value="" placeholder="Id address" />
+            
+            <button>Update</button>
+        }
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/ForModalWindows.js"></script>

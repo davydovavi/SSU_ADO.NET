@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" href="~/Style/StyleSheet1.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            @Html.ActionLink("Shops", "GetShopsOfUser", "Home")
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Get my shops", "GetShopsOfUser", "Home")
+                @Html.ActionLink("Get ratings", "GetRatingsOfUser", "Home")
+                @Html.ActionLink("My page", "UserProfile", "Home")
+                @Html.ActionLink("Log out", "LogOut", "Home")
+            }
+            else
+            {
+                @Html.ActionLink("Log in", "LogIn", "Home")
+            }
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
